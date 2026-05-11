@@ -1,0 +1,56 @@
+<%- include('templates/header') %>
+
+<h1>Welcome</h1>
+
+<% if(message) { %>
+
+    <div class="alert alert-danger">
+        <%= message %>
+    </div>
+
+<% } %>
+
+<% if(!authenticated) { %>
+
+<form method="POST" action="/signup">
+
+    <div class="mb-3">
+        <input class="form-control" name="name" placeholder="Name">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" name="email" placeholder="Email">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+    </div>
+
+    <button class="btn btn-primary">
+        Sign Up
+    </button>
+
+</form>
+
+<br>
+
+<a href="/login" class="btn btn-success">
+    Login
+</a>
+
+<% } else { %>
+
+<h3>Hello <%= name %></h3>
+<h3> DOGS!</h3>
+
+<a href="/dogs" class="btn btn-primary">
+    Members Area
+</a>
+
+<a href="/logout" class="btn btn-danger">
+    Logout
+</a>
+
+<% } %>
+
+<%- include('templates/footer') %>
